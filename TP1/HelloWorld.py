@@ -1,7 +1,11 @@
-# Input : 42 51
-# Output : 43 45 47 49 51
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
 
 def get_odd_numbers_between_two_numbers(nb1, nb2):
+    # Input : 42 51
+    # Output : 43 45 47 49 51
+
     output = []
 
     if nb1 % 2 == 0:
@@ -13,8 +17,7 @@ def get_odd_numbers_between_two_numbers(nb1, nb2):
 
     return output
 
+
 print(get_odd_numbers_between_two_numbers(4, 13))
 print(get_odd_numbers_between_two_numbers(42, 51))
 print(get_odd_numbers_between_two_numbers(-1, 5))
-
-
