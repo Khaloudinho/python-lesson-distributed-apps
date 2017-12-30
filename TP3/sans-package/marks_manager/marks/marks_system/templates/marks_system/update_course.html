@@ -1,0 +1,15 @@
+{% extends "marks_system/base.html" %}
+
+{% block title%}Update Course{% endblock title %}
+
+{% block content%}
+<div class="container">
+    <h1>Update course</h1>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.code }}
+        {{ form.subject }}
+        <input type="submit" value="Update"/>
+    </form>
+
+</div>
+{% endblock content %}

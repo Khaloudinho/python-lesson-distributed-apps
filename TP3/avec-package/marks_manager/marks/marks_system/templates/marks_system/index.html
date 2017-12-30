@@ -1,0 +1,17 @@
+{% extends "marks_system/base.html" %}
+{% block title%}Courses{% endblock title %}
+
+{% block content%}
+<div class="container">
+    <h1>Courses list</h1>
+{% if course_list %}
+<ul>
+    {% for course in course_list %}
+    <li><a href="{% url 'marks_system:detail' course.code %}">{{ course.code }} {{ course.subject }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No courses are available.</p>
+{% endif %}
+</div>
+{% endblock content %}

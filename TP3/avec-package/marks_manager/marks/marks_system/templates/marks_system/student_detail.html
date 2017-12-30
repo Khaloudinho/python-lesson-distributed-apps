@@ -1,0 +1,12 @@
+{% extends "marks_system/base.html" %}
+
+{% block title%}Course detail{% endblock title %}
+
+{% block content%}
+<div class="container">
+    <h1>Student : </h1>
+    <p>LASTNAME : {{ student.last_name }}</p>
+    <p>FIRSTNAME : {{ student.first_name }}</p>
+    <p>BIRTHDATE : {{ student.birth_date }}</p>
+</div>
+{% endblock content %}

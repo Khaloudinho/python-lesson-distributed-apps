@@ -1,0 +1,34 @@
+{% extends "marks_system/base.html" %}
+
+{% block title%}Course detail{% endblock title %}
+
+{% block content%}
+<div class="container">
+    <h1>Subject :</h1>
+    <div>
+        <h2>CODE : {{ course.code }}</h2>
+        <h3>DESCRIPTION : {{ course.subject }}</h3>
+        <p>Start : {{ course.start_date }}</p>
+        <p>End : {{ course.end_date }}</p>
+    </div>
+
+    <h1>Examination :</h1>
+    <div>
+        <p>NAME : {{ course.examination.name }}</p>
+        <p class="text-danger">DATE : {{ course.examination.date }}</p>
+    </div>
+
+    <h1>Students list</h1>
+    <ul>
+        {% for student in course.students.all %}
+        <li>
+            <p>{{ student.last_name }} {{ student.first_name }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'marks_system:course-update' course.code %}" method="get">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Update this course</button>
+    </form>
+</div>
+{% endblock content %}

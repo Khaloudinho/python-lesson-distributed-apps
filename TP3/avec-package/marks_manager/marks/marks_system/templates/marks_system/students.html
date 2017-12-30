@@ -1,0 +1,21 @@
+{% extends "marks_system/base.html" %}
+
+{% block title%}Students{% endblock title %}
+
+{% block content%}
+
+<div class="container">
+    <h1>Students list : </h1>
+    <ul>
+        {% for student in students %}
+        <li><a href="{% url 'marks_system:detail-student' student.id %}">{{ student.last_name }} {{ student.first_name }}</a></li>
+        {% endfor %}
+    </ul>
+    <h1>Add a new student</h1>
+    <form action="{% url 'marks_system:students' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+{% endblock content %}
