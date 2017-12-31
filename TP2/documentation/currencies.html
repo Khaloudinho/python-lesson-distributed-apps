@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module currencies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>currencies</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href="../">index</a><br><a href="file:/Users/bertran95u/PycharmProjects/tp2/currencies.py">/Users/bertran95u/PycharmProjects/tp2/currencies.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;-*-coding:utf-8-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="urllib.html">urllib</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-askCurrencies"><strong>askCurrencies</strong></a>()</dt><dd><tt>Ask&nbsp;currencies&nbsp;to&nbsp;user<br>
+&nbsp;<br>
+:return&nbsp;askedCurrencies&nbsp;(list)&nbsp;:&nbsp;list&nbsp;of&nbsp;currencies&nbsp;which&nbsp;are&nbsp;asked</tt></dd></dl>
+ <dl><dt><a name="-changeCourses"><strong>changeCourses</strong></a>(previousMessage, currentMessage)</dt><dd><tt>Determine&nbsp;if&nbsp;one&nbsp;of&nbsp;observed&nbsp;currency&nbsp;has&nbsp;changed..<br>
+&nbsp;<br>
+:param&nbsp;previousMessage&nbsp;(str)&nbsp;:&nbsp;previous&nbsp;message&nbsp;for&nbsp;twitter<br>
+:param&nbsp;currentMessage&nbsp;(str)&nbsp;:&nbsp;current&nbsp;message&nbsp;for&nbsp;twitter<br>
+&nbsp;<br>
+:return&nbsp;change&nbsp;(bool)&nbsp;:&nbsp;change&nbsp;currencies&nbsp;?</tt></dd></dl>
+ <dl><dt><a name="-printCurrencies"><strong>printCurrencies</strong></a>(prices, avaiableCurrencies)</dt><dd><tt>Debug&nbsp;method&nbsp;which&nbsp;displays&nbsp;currencies&nbsp;courses<br>
+&nbsp;<br>
+:param&nbsp;prices&nbsp;(list)&nbsp;:&nbsp;list&nbsp;of&nbsp;currencies's&nbsp;price<br>
+:param&nbsp;avaiableCurrencies&nbsp;(list)&nbsp;:&nbsp;retained&nbsp;currencies</tt></dd></dl>
+ <dl><dt><a name="-getCurrencyById"><strong>getCurrencyById</strong></a>(json, currencyCode)</dt><dd><tt>Get&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;specific&nbsp;currency<br>
+&nbsp;<br>
+:param&nbsp;json&nbsp;(object)&nbsp;:&nbsp;json&nbsp;object&nbsp;representation&nbsp;of&nbsp;obtained&nbsp;json<br>
+:param&nbsp;currencyCode&nbsp;(str)&nbsp;:&nbsp;currency&nbsp;code&nbsp;(EUR,&nbsp;USD,&nbsp;..)<br>
+&nbsp;<br>
+:return&nbsp;currency_price&nbsp;(str)</tt></dd></dl>
+ <dl><dt><a name="-getExistingCurrenciesCode"><strong>getExistingCurrenciesCode</strong></a>(json, askedCurrencies)</dt><dd><tt>Determine&nbsp;if&nbsp;askedCurrencies&nbsp;are&nbsp;supported&nbsp;by&nbsp;the&nbsp;used&nbsp;API<br>
+&nbsp;<br>
+:param&nbsp;json&nbsp;(object)&nbsp;:&nbsp;representation&nbsp;of&nbsp;obtained&nbsp;currencies<br>
+:param&nbsp;askedCurrencies&nbsp;(list)&nbsp;:&nbsp;list&nbsp;of&nbsp;asked&nbsp;currencies&nbsp;by&nbsp;code&nbsp;(EUR,&nbsp;USD,&nbsp;..)<br>
+&nbsp;<br>
+:return&nbsp;existingAndAskedCurrencies&nbsp;(list)&nbsp;:&nbsp;list&nbsp;of&nbsp;currencies&nbsp;which&nbsp;are</tt></dd></dl>
+ <dl><dt><a name="-get_currencies_price"><strong>get_currencies_price</strong></a>()</dt><dd><tt>Call&nbsp;api&nbsp;and&nbsp;convert&nbsp;json&nbsp;to&nbsp;object<br>
+&nbsp;<br>
+:return&nbsp;json&nbsp;(object)&nbsp;:&nbsp;object&nbsp;representation&nbsp;of&nbsp;obtained&nbsp;json&nbsp;about&nbsp;currencies</tt></dd></dl>
+ <dl><dt><a name="-listCurrencies"><strong>listCurrencies</strong></a>(json, selectedCurrencies)</dt><dd><tt>Constructs&nbsp;the&nbsp;twitter&nbsp;message&nbsp;content<br>
+&nbsp;<br>
+:param&nbsp;json&nbsp;(object)&nbsp;:&nbsp;object&nbsp;representation&nbsp;of&nbsp;json<br>
+:param&nbsp;selectedCurrencies&nbsp;(list)&nbsp;:&nbsp;retained&nbsp;currencies<br>
+&nbsp;<br>
+:return&nbsp;currenciesMessage&nbsp;(str)&nbsp;:&nbsp;change&nbsp;currencies&nbsp;?</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>API_PATH</strong> = 'https://api.coinmarketcap.com/v1/ticker/?limit=2000&amp;convert=EUR'<br>
+<strong>absolute_import</strong> = _Feature((2, 5, 0, 'alpha', 1), (3, 0, 0, 'alpha', 0), 16384)<br>
+<strong>print_function</strong> = _Feature((2, 6, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 65536)</td></tr></table>
+</body></html>
