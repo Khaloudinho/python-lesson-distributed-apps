@@ -6,6 +6,14 @@ from __future__ import absolute_import, print_function
 import urllib.request
 from json import loads
 
+
+# IMPORTS_MAILS
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+from conf.mailCredentials import *
+
 API_PATH='https://api.coinmarketcap.com/v1/ticker/?limit=2000&convert=EUR'
 
 # E/S utilisateurs
@@ -111,3 +119,29 @@ def changeCourses(previousMessage, currentMessage):
         :return change (bool) : change currencies ?
     """
     return bool(previousMessage!=currentMessage)
+
+# Envoi de mail
+def sendEmail(currentMessage):
+
+    msg = MIMEMultipart()
+    # TODO init sender
+    # TODO init receiver
+    # TODO init subject
+    # TODO init mail body
+    msg.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+
+    try:
+        # TODO param function to init credentials for mail sending
+    except:
+        print(MAIL_AUTHENTIFICATION_ERROR)
+
+    text = msg.as_string()
+
+    try:
+        # TODO call function to send the mail
+    except:
+        print(MAIL_SEND_ERROR)
+
+    server.quit()

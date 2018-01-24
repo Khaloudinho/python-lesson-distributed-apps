@@ -2,7 +2,7 @@
 # -*-coding:utf-8-*-
 
 from currencies import *
-from twitterCredentials import *
+from conf.twitterCredentials import *
 import tweepy
 import time
 
@@ -40,6 +40,7 @@ if __name__ == '__main__':
         if(changeCourses(previousMessage, currentMessage)):
             # Met a jour notre compte twitter
             api.update_status(currentMessage)
+            # TODO ADD MAIL FUNCTION CALL
 
 
         time.sleep(10)
