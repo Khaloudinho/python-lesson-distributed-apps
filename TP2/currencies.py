@@ -6,7 +6,7 @@ from __future__ import absolute_import, print_function
 import urllib.request
 from json import loads
 
-API_PATH='https://api.coinmarketcap.com/v1/ticker/?limit=2000&convert=EUR'
+API_PATH='https://api.coinmarketcap.com/v1/ticker/?limit=2000&convert='
 
 # E/S utilisateurs
 # Demander de rentrer des codes devises a l'utilisateur
@@ -30,13 +30,13 @@ def askCurrencies():
 
 # API
 # Interagir avec l'API coinmarketcap
-def get_currencies_price():
+def get_currencies_price(targetCurrency):
     """
         Call api and convert json to object
 
         :return json (object) : object representation of obtained json about currencies
     """
-    req = urllib.request.urlopen(API_PATH)
+    req = urllib.request.urlopen(API_PATH+targetCurrency)
     return loads(req.read())
 
 # Permet d'eviter les erreurs lies a des suppresion de crypto monnaies dans l'API coinmarketcap
@@ -59,7 +59,7 @@ def getExistingCurrenciesCode(json, askedCurrencies):
 
 
 # Obtenir la valeur d'une crypto monnaie selon son code identificateur BTC ==> bitcoin
-def getCurrencyById(json, currencyCode):
+def getCurrencyById(json, currencyCode, targetCurrency):
     """
         Get the value of a specific currency
 
@@ -71,11 +71,11 @@ def getCurrencyById(json, currencyCode):
     # Filtrer par le code devise
     for x in json:
         if x['symbol'] == currencyCode:
-            currency_price = str(round(float(x['price_eur']), 2))
+            currency_price = str(round(float(x['price_'+targetCurrency.lower()]), 2))
             return currency_price
 
 # Generation du message
-def listCurrencies(json, selectedCurrencies):
+def listCurrencies(json, selectedCurrencies, targetCurrency):
     """
         Constructs the message content
 
@@ -84,20 +84,20 @@ def listCurrencies(json, selectedCurrencies):
 
         :return currenciesMessage (str) : change currencies ?
     """
-    currenciesMessage = "[EUR]\n"
+    currenciesMessage = "["+targetCurrency+"]\n"
     for currencyCode in selectedCurrencies:
-        currenciesMessage += currencyCode + ": "+getCurrencyById(json, currencyCode)+'\n'
+        currenciesMessage += currencyCode + ": "+getCurrencyById(json, currencyCode, targetCurrency)+'\n'
     return currenciesMessage
 
 # Affichage en ligne de commande
-def printCurrencies(prices, avaiableCurrencies):
+def printCurrencies(prices, avaiableCurrencies, targetCurrency):
     """
         Debug method which displays currencies courses
 
         :param prices (list) : list of currencies's price
         :param avaiableCurrencies (list) : retained currencies
     """
-    print("***prices***\n" + listCurrencies(prices, avaiableCurrencies) +"***prices***\n")
+    print("***prices***\n" + listCurrencies(prices, avaiableCurrencies, targetCurrency) +"***prices***\n")
 
 # Twitter
 # Detecter si le message twitter est le meme que le precedent pou eviter tout bug avec l'API twitter a ce sujet
