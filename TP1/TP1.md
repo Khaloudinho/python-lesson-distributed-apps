@@ -1,7 +1,11 @@
 # TP1 
 Demande :
 
-faire un programme affichant les nombres impaires dans un interval donné
+Faire un programme affichant les nombres impairs dans un intervalle donné
+
+Pour run le programme : 
+``` python nom_du_script.py ```
+ou run graphiquement via l'éditeur
 
 Résultat possible :
 
