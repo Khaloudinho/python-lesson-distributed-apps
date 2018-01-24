@@ -1,7 +1,5 @@
 # TP1 
-Demande :
-
-Faire un programme affichant les nombres impairs dans un intervalle donné
+## But : faire un programme affichant les nombres impairs dans un intervalle donné
 
 Pour run le programme : 
 ``` python nom_du_script.py ```
