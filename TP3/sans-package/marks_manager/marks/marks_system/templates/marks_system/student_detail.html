@@ -8,5 +8,8 @@
     <p>LASTNAME : {{ student.last_name }}</p>
     <p>FIRSTNAME : {{ student.first_name }}</p>
     <p>BIRTHDATE : {{ student.birth_date }}</p>
+    <form action="{% url 'marks_system:update-student' pk=student.id %}" method="get">{% csrf_token %}
+        <input type="submit" value="Modifier" class="btn-danger"/>
+    </form>
 </div>
 {% endblock content %}

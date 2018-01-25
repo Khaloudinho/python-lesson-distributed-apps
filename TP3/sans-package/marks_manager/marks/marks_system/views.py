@@ -6,7 +6,7 @@ from django.utils import timezone
 from .models import Examination, Student, Course, Mark
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
-from .forms import CreateStudentForm, CourseForm
+from .forms import CreateStudentForm, CourseForm, StudentUpdateForm
 
 # Create your views here.
 
@@ -71,3 +71,21 @@ def get_students(request):
         form = CreateStudentForm()
 
     return render(request, 'marks_system/students.html', {'form': form, 'students': students})
+
+class StudentUpdateView(generic.UpdateView):
+    model = Student
+    fields = ['last_name', 'first_name']
+    template_name = 'marks_system/update_student.html'
+
+def update_student(request, pk):
+    obj = get_object_or_404(Student, pk=pk)
+    form = StudentUpdateForm(request.POST or None,
+                        request.FILES or None, instance=obj)
+    if request.method == 'POST':
+        print(form)
+        if form.is_valid():
+           form.save()
+           print("student UPDATED")
+           return HttpResponseRedirect('/marks-system/students')
+
+    return render(request, 'marks_system/update_student.html', {'form': form})

@@ -20,6 +20,10 @@ urlpatterns = [
 
     # **Student**
     # ex: /marks_system/students/1/ a given student
+    path('students/<int:pk>/edit', views.update_student, name='update-student'),
+
+    # **Student**
+    # ex: /marks_system/students/1/ a given student
     path('students/<int:pk>/', views.DetailStudentView.as_view(), name='detail-student'),
 
     # forms

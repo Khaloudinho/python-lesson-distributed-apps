@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Course
+from .models import Course, Student
 
 class CreateStudentForm(forms.Form):
     last_name = forms.CharField(label='Last Name', max_length=200)
@@ -12,3 +12,8 @@ class CourseForm(forms.ModelForm):
         model = Course
         # fields = ['code', 'subject', 'start_date', 'end_date']
         fields = ['code', 'subject']
+
+class StudentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['last_name', 'first_name']
